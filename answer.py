@@ -34,7 +34,7 @@ def compound_interest_with_payments(principal, payment, term, rate, end_of_perio
 
 
 def files_innerjoin(file_path1, file_path2, **kwargs):
-    """Inner join"""
+    """Inner files_innerjoin"""
     key_join = kwargs.get("key_join", [])
     output_file = kwargs.get("output_file", "results.csv")
 
@@ -65,7 +65,7 @@ def files_innerjoin(file_path1, file_path2, **kwargs):
 
 
 def files_leftouterjoin(file_path1, file_path2, **kwargs):
-    """Left outer"""
+    """Left outer file """
     key_join = kwargs.get("key_join", [])
     output_file = kwargs.get("output_file", "left_results.csv")
 
@@ -96,7 +96,7 @@ def files_leftouterjoin(file_path1, file_path2, **kwargs):
 
 
 def files_rightouterjoin(file_path1, file_path2, **kwargs):
-    """Right outer"""
+    """Right files_rightouterjoin"""
     key_join = kwargs.get("key_join", [])
     output_file = kwargs.get("output_file", "right_results.csv")
 
