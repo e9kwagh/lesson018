@@ -55,11 +55,11 @@ def files_innerjoin(file_path1, file_path2, **kwargs):
                 current_data.update(row)
                 joined_data.append(current_data)
 
-    with open(output_file, "w", encoding="utf-8", newline="") as out_f:
+    with open(output_file, "w", encoding="utf-8", newline="") as last_file:
         fieldnames = reader1.fieldnames + [
             f for f in reader2.fieldnames if f not in key_join
         ]
-        writer = csv.DictWriter(out_f, fieldnames=fieldnames)
+        writer = csv.DictWriter(last_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(joined_data)
 
@@ -86,11 +86,11 @@ def files_leftouterjoin(file_path1, file_path2, **kwargs):
             new_data.update(row)
             joined_data.append(new_data)
 
-    with open(output_file, "w", encoding="utf-8", newline="") as out_f:
+    with open(output_file, "w", encoding="utf-8", newline="") as last_file:
         fieldnames = reader1.fieldnames + [
             f for f in reader2.fieldnames if f not in key_join
         ]
-        writer = csv.DictWriter(out_f, fieldnames=fieldnames)
+        writer = csv.DictWriter(last_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(joined_data)
 
@@ -120,11 +120,11 @@ def files_rightouterjoin(file_path1, file_path2, **kwargs):
             }
             joined_data.append(new_data)
 
-    with open(output_file, "w", encoding="utf-8", newline="") as out_f:
+    with open(output_file, "w", encoding="utf-8", newline="") as last_file:
         fieldnames = reader1.fieldnames + [
             f for f in reader2.fieldnames if f not in key_join
         ]
-        writer = csv.DictWriter(out_f, fieldnames=fieldnames)
+        writer = csv.DictWriter(last_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(joined_data)
 
@@ -185,8 +185,8 @@ def split_file(filename, split_cols):
     for clean_split_key, rows in output_files.items():
         output_filename = "_".join(str(value) for value in clean_split_key) + ".csv"
         output_filename = clean_filename(output_filename)
-        with open(output_filename, "w", encoding="utf-8", newline="") as out_f:
-            writer = csv.DictWriter(out_f, fieldnames=fieldnames)
+        with open(output_filename, "w", encoding="utf-8", newline="") as last_file:
+            writer = csv.DictWriter(last_file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(rows)
 
